@@ -8,6 +8,19 @@
 
 import UIKit
 
+class MyClass: NSCoding, Codable {
+    func encode(with coder: NSCoder) {
+        
+    }
+    init() {
+        
+    }
+    required init?(coder: NSCoder) {
+        
+    }
+    
+    
+}
 class ViewController: UIViewController {
 
     @IBOutlet weak var angleSlider: UISlider!
@@ -57,5 +70,52 @@ class ViewController: UIViewController {
     @IBAction func diagonalShiftChanged(_ sender: Any) {
         updateTextLayer()
     }
+    
+    private func save() throws {
+      let fileManager = FileManager.default
+
+//      do {
+
+        let fileName: String = ""
+        let object = MyClass()
+        
+        if !fileManager.fileExists(atPath: fileName) {
+            //let data = NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: false) {
+            
+            let data = try NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: false)
+        }
+//      }
+    }
+    
+    private func load() throws {
+      let fileManager = FileManager.default
+      do {
+        let cacheDirectory = try fileManager.url(for: .cachesDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
+        let fileDirectory = cacheDirectory.appendingPathComponent("spacekit")
+
+        var fileDir = fileDirectory.absoluteString
+        let range = fileDir.startIndex..<fileDir.index(fileDir.startIndex, offsetBy: 7)
+        fileDir.removeSubrange(range)
+
+//        try createFolderIfNeeded(atPath: fileDir, absolutePath: fileDirectory)
+
+        let paths = try fileManager.contentsOfDirectory(atPath: fileDir)
+
+        for path in paths {
+            let objData = try Data(contentsOf: URL(fileURLWithPath: fileDir + path))
+            if let object = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [MyClass.self], from: objData) {
+            if false {
+              add(object: object)
+            } else {
+              try? fileManager.removeItem(atPath: fileDir + path)
+            }
+          }
+        }
+      } catch {
+//        throw Operations.loadFail
+      }
+    }
+
 }
+
 
