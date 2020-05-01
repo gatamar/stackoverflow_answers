@@ -1,15 +1,15 @@
 //
-//  so61506029Tests.swift
-//  so61506029Tests
+//  so61454871Tests.swift
+//  so61454871Tests
 //
-//  Created by Olha Pavliuk on 29.04.2020.
+//  Created by Olha Pavliuk on 01.05.2020.
 //  Copyright © 2020 Olha Pavliuk. All rights reserved.
 //
 
 import XCTest
-@testable import so61506029
+@testable import so61454871
 
-class so61506029Tests: XCTestCase {
+class so61454871Tests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,15 +19,9 @@ class so61506029Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testMockNetwork() {
-        let network = MockNetwork()
-        network.func1()
-        
-        
-    }
-    
-    func image(for condition: String) {
-        
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testPerformanceExample() {
