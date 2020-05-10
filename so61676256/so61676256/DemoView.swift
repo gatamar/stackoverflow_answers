@@ -58,8 +58,8 @@ class DemoView: NSView {
 
         let textSize = text.size(withAttributes: textAttributes)
 
-        context.translateBy(x: textCenter.x+textSize.height/2, y: textCenter.y-textSize.width/2)
-        context.rotate(by: CGFloat.pi / 2)
+        context.translateBy(x: textCenter.x-textSize.height/2, y: textCenter.y+textSize.width/2)
+        context.rotate(by: -CGFloat.pi / 2)
         
         text.draw(at: .zero, withAttributes: textAttributes)
     }
