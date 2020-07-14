@@ -3,6 +3,11 @@ Quick prototypes to play around 🛠
 
 ---
 
+Criterias for "good" questions:
+
+1. They have a link to compileable project.
+2. They have at least 3 tags (or 2?)
+
 Patterns I've noticed:
 
 1. Downvoted answers have some probability of being deleted. 🤷‍
