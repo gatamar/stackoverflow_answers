@@ -13,18 +13,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = "https://www.flaticon.com/svg/static/icons/svg/3874/3874453.svg"
-        let data = try! Data(contentsOf: URL(string: path)!)
-        
         let webView = WKWebView(frame: view.bounds)
-        let request = URLRequest(url: URL(string: path)!)
+        let request = URLRequest(url: svgUrlLocal)
+        //let request = URLRequest(url: svgUrlRemote)
         webView.load(request)
         view.addSubview(webView)
-        
-        let imageView = UIImageView(frame: view.bounds)
-        let image = UIImage(data: data)
-        imageView.image = image
-        view.addSubview(imageView)
+    }
+    
+    var svgUrlLocal: URL {
+        let path = Bundle.main.path(forResource: "3874453", ofType: "svg")!
+        return URL(fileURLWithPath: path)
+    }
+    
+    var svgUrlRemote: URL {
+        let path = "https://www.flaticon.com/svg/static/icons/svg/3874/3874453.svg"
+        return URL(string: path)!
     }
 
 
